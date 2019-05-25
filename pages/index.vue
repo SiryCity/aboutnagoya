@@ -1,12 +1,25 @@
 <template lang="pug">
-  div test
+  div
+    heading
+    article-link(
+      title='title1'
+      body='body1'
+      img='img'
+    )
+    article-link(
+      title='title1'
+      body='body1'
+      img='img'
+    )
 </template>
 
 <script>
-import ArticleLInk from '~/components/ArticleLink'
+import Heading from '~/components/Heading'
+import ArticleLink from '~/components/ArticleLink'
 export default {
   components: {
-    ArticleLInk
-  }
+    Heading,
+    ArticleLink,
+  },
 }
 </script>

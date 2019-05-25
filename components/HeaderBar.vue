@@ -14,7 +14,7 @@
     height 100%
     display block
     color var(--bgc)
-    background-color  var(--c)
+    background var(--c)
     text-decoration none
     display flex
     flex-direction column
