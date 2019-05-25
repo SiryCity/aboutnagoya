@@ -20,7 +20,8 @@ export default {
 :root
   --c #111
   --bgc #eee
-  --green limegreen
+  --bggreen #ddd
+  --green #30a358
 
 html
   font-family "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif

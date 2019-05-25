@@ -1,16 +1,22 @@
 <template lang="pug">
   div
-    heading
-    article-link(
-      title='title1'
-      body='body1'
-      img='img'
-    )
-    article-link(
-      title='title1'
-      body='body1'
-      img='img'
-    )
+    section#section
+      heading
+      article-link(
+        title='ああああああああああああああ'
+        district='中区'
+        img='img'
+      )
+      article-link(
+        title='ああああああああああああああ'
+        district='中区'
+        img='img'
+      )
+      article-link(
+        title='ああああああああああああああ'
+        district='中区'
+        img='img'
+      )
 </template>
 
 <script>
@@ -23,3 +29,8 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus" scoped>
+#section
+  width 70%
+</style>

@@ -1,13 +1,13 @@
 <template lang="pug">
   nuxt-link.article-link(to='/')
+    //img.article-link__img(src='~/assets/nagoya.svg')
     h3.article-link__title {{title}}
-    p.article-link__body {{body}}
-    img.article-link__img(src='~/assets/nagoya.svg')
+    div.article-link__district {{district}}
 </template>
 
 <script>
 export default {
-  props: ['title', 'body','img']
+  props: ['title', 'district','img']
 }
 </script>
 
@@ -15,29 +15,28 @@ export default {
 <style lang="stylus" scoped>
 .article-link
   width 100%
+  height 120px
   color var(--c)
   text-decoration none
-  border-bottom 2px var(--c) solid
-  margin-bottom 50px
+  margin 30px 0
   display flex
   flex-direction column
-  align-items center
+  flex-wrap wrap
+  justify-content center
+  align-content flex-start
+  border-radius 3px
+  box-shadow 0 3px 6px #bbb
 
   &__title
-    width 95%
-    height 26px
+    height 60px
+    line-height 86px
     font-size 20px
     margin 0
     padding 0
-  &__body
-    width 95%
-    height 26px
-    margin 5px 0 -20px
-    padding 0
-    word-wrap break-word
-  &__img
-    width 64px
-    height 64px
-    align-self flex-end
+    font-weight normal
+  &__district
+    height 40px
+    font-size 14px
+
 </style>
 

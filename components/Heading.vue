@@ -1,6 +1,5 @@
 <template lang="pug">
   div.heading
-    img.heading__img(src='~/assets/nagoya-white.svg')
     h2.heading__title sss
 </template>
 
@@ -9,24 +8,24 @@
 <style lang="stylus" scoped>
 .heading
   width 95%
-  padding 10px 2.5%
-  color var(--bgc)
-  background var(--c)
-  margin-bottom 50px
+  height 90px
+  margin 30px 0
+  padding-left 96px
+  border-left 10px solid var(--green)
+  background var(--bggreen)
   display flex
-  justify-content space-evenly
-  border-bottom 3px var(--green) solid
-  box-shadow 0 5px 0 0 var(--c)
+  flex-direction column
+  flex-wrap wrap
+  justify-content center
+  align-content flex-start
   
-  &__img
-    width 64px
-    height 64px
 
   &__title
-    width calc(100% - 64px - 2.5%)
+    height 90px
+    line-height 90px
+    font-size 24px
     margin 0
     padding 0
-    font-size 20px
     font-weight normal
 
 </style>

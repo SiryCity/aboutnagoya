@@ -9,12 +9,12 @@
 #header
   width 100%
   height 180px
+  border-bottom 10px solid var(--green)
+  background var(--bggreen)
   #header__link
     width 100%
     height 100%
-    display block
-    color var(--bgc)
-    background var(--c)
+    color var(--c)
     text-decoration none
     display flex
     flex-direction column
