@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import {createClient} from '~/plugins/contentful.js'
 import SectionWrapper from '~/components/SectionWrapper'
 import Heading from '~/components/Heading'
 import ArticleLink from '~/components/ArticleLink'
@@ -27,7 +28,30 @@ export default {
   },
   computed: {
     kari: () => kari
+  },
+
+  async asyncData({env, payload}){
+  console.dir(42)
+  if(payload) return payload
+  const contents = await createClient().getEntries({
+    'content_type': env.CTF_BLOG_POST_TYPE_ID,
+    order: '-fields.date',
+  })
+
+  console.dir(contents)
+  /*
+  return {
+    posts: contents.items.map(item => 
+      ({
+        title: item.fields.title,
+        date: item.fields.date,
+        tags: item.fields.tags,
+      })
+    )
   }
+  */
+
+}
 }
 </script>
 

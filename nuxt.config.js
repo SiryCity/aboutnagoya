@@ -40,6 +40,8 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/markdownit',
+    '@nuxtjs/dotenv',
   ],
 
   /*
@@ -51,5 +53,16 @@ module.exports = {
     */
     extend(config, ctx) {
     }
+  },
+
+  markdownit: {
+    injected: true,
+  },
+  
+  env: {
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID || require('./.contentful.json').CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || require('./.contentful.json').CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID || require('./.contentful.json').CTF_BLOG_POST_TYPE_ID,
+    
   }
 }
