@@ -3,12 +3,17 @@
     section-wrapper(percent=66.7)
       heading(title='最新の投稿')
       article-link(
-        date='2019-01-01'
-        subTitle='空白地帯'
-        title='だいたい〇〇町'
-        district='中区'
+        v-for='(post, i) in posts'
+        :key='`post-${i}`'
+
+        :date='post.date'
+        :subTitle='post.subTitle'
+        :title='post.title'
+        :district='post.district'
+
         :img='kari'
       )
+
     section-wrapper(percent=33.3)
       heading(title='区で調べる')
       heading(title='地図で調べる')
@@ -31,27 +36,23 @@ export default {
   },
 
   async asyncData({env, payload}){
-  console.dir(42)
-  if(payload) return payload
-  const contents = await createClient().getEntries({
-    'content_type': env.CTF_BLOG_POST_TYPE_ID,
-    order: '-fields.date',
-  })
+    if(payload) return payload
+    const contents = await createClient().getEntries({
+      'content_type': env.CTF_BLOG_POST_TYPE_ID,
+      order: '-fields.date',
+    })
 
-  console.dir(contents)
-  /*
-  return {
-    posts: contents.items.map(item => 
-      ({
-        title: item.fields.title,
-        date: item.fields.date,
-        tags: item.fields.tags,
-      })
-    )
+    return {
+      posts: contents.items.map(item => 
+        ({
+          title: item.fields.title,
+          subTitle: item.fields.subTitle,
+          date: item.fields.date,//.search(/(.*)(?=T)/),
+          district: item.fields.district,
+        })
+      )
+    }
   }
-  */
-
-}
 }
 </script>
 
