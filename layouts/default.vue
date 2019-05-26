@@ -17,11 +17,14 @@ export default {
 
 <style lang="stylus">
 
+
 :root
-  --c #111
-  --bgc #eee
-  --bggreen #ddd
-  --green #30a358
+  --c #222
+  --bgc #ddd
+  --gold #cbf442
+
+  --space 15px
+  --r 3px
 
 html
   font-family "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
@@ -45,6 +48,6 @@ body
 
 #root
   width 1080px
-  max-width 95%
+  max-width calc(100% - var(--space))
   margin 40px auto
 </style>
