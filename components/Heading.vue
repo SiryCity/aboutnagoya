@@ -14,7 +14,7 @@ export default {
 .heading
   width 100%
   height 90px
-  margin 30px 0
+  margin-bottom var(--margin)
   border-bottom 5px solid var(--gold)
   color var(--bgc)
   background var(--c)

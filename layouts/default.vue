@@ -25,6 +25,7 @@ export default {
 
   --space 15px
   --r 3px
+  --margin 30px
 
 html
   font-family "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif

@@ -1,13 +1,14 @@
 <template lang="pug">
   nuxt-link.article-link(to='/')
-    img.article-link__img(src='~/assets/nagoya.svg')
+    img.article-link__img(:src='img')
+    div.article-link__meta {{date}} {{district}}
     h3.article-link__title {{title}}
-    div.article-link__district {{district}}
+    h4.article-link__sub-title {{subTitle}}
 </template>
 
 <script>
 export default {
-  props: ['title', 'district','img']
+  props: ['date', 'title', 'subTitle', 'district','img']
 }
 </script>
 
@@ -18,7 +19,7 @@ export default {
   height 100px
   color var(--c)
   text-decoration none
-  margin 30px 0
+  margin-bottom var(--margin)
   display flex
   flex-direction column
   flex-wrap wrap
@@ -30,17 +31,25 @@ export default {
   &__img
     width 90px
     height 90px
-    margin 0 3px 
+    margin 5px 3px
+    
+  &__meta
+    height 15px
+    font-size 14px
   &__title
-    height 60px
-    line-height 86px
+    height 40px
+    line-height 50px
     font-size 20px
     margin 0
     padding 0
     font-weight normal
-  &__district
-    height 40px
+  &__sub-title
+    height 25px
+    line-height 30px
     font-size 14px
+    margin 0
+    padding 0
+    font-weight normal
 
 </style>
 

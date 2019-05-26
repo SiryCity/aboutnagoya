@@ -3,19 +3,11 @@
     section-wrapper(percent=66.7)
       heading(title='最新の投稿')
       article-link(
-        title='ああああああああああああああ'
+        date='2019-01-01'
+        subTitle='空白地帯'
+        title='だいたい〇〇町'
         district='中区'
-        img='img'
-      )
-      article-link(
-        title='ああああああああああああああ'
-        district='中区'
-        img='img'
-      )
-      article-link(
-        title='ああああああああああああああ'
-        district='中区'
-        img='img'
+        :img='kari'
       )
     section-wrapper(percent=33.3)
       heading(title='区で調べる')
@@ -26,12 +18,16 @@
 import SectionWrapper from '~/components/SectionWrapper'
 import Heading from '~/components/Heading'
 import ArticleLink from '~/components/ArticleLink'
+import kari from '~/assets/nagoya.svg'
 export default {
   components: {
     SectionWrapper,
     Heading,
     ArticleLink,
   },
+  computed: {
+    kari: () => kari
+  }
 }
 </script>
 
