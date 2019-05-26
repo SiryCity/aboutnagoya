@@ -7,23 +7,24 @@
 
 <style lang="stylus" scoped>
 .heading
-  width 95%
+  width 100%
   height 90px
   margin 30px 0
-  padding-left 96px
-  border-left 10px solid var(--green)
+  border-left 10px solid var(--c)
   background var(--bggreen)
   display flex
   flex-direction column
   flex-wrap wrap
   justify-content center
   align-content flex-start
+  box-sizing border-box
+  padding 5px
   
 
   &__title
     height 90px
     line-height 90px
-    font-size 24px
+    font-size 32px
     margin 0
     padding 0
     font-weight normal

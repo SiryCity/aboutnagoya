@@ -1,6 +1,6 @@
 <template lang="pug">
   nuxt-link.article-link(to='/')
-    //img.article-link__img(src='~/assets/nagoya.svg')
+    img.article-link__img(src='~/assets/nagoya.svg')
     h3.article-link__title {{title}}
     div.article-link__district {{district}}
 </template>
@@ -15,7 +15,7 @@ export default {
 <style lang="stylus" scoped>
 .article-link
   width 100%
-  height 120px
+  height 100px
   color var(--c)
   text-decoration none
   margin 30px 0
@@ -27,6 +27,10 @@ export default {
   border-radius 3px
   box-shadow 0 3px 6px #bbb
 
+  &__img
+    width 90px
+    height 90px
+    margin 0 3px 
   &__title
     height 60px
     line-height 86px

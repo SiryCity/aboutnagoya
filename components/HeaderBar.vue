@@ -9,7 +9,7 @@
 #header
   width 100%
   height 180px
-  border-bottom 10px solid var(--green)
+  border-bottom 10px solid var(--c)
   background var(--bggreen)
   #header__link
     width 100%
