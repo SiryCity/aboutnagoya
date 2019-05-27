@@ -18,4 +18,6 @@ export default {
   display inline-block
   background #e6e6e6
   border-radius var(--r)
+
+//.section--left
 </style>

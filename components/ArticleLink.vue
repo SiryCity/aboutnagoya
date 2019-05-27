@@ -1,5 +1,5 @@
 <template lang="pug">
-  nuxt-link.article-link(to='/')
+  nuxt-link.article-link(:to='{name:"posts-date", params:{date}}')
     img.article-link__img(:src='img')
     div.article-link__meta {{date}} {{district}}
     h3.article-link__title {{title}}
