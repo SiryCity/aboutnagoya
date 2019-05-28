@@ -18,7 +18,12 @@
     section-wrapper(pos='right')
       title-box(title='区で調べる')
       title-box(title='地図で調べる')
-      nuxt-link(to='map') test
+      char-link(
+        to='map'
+        char='だいたいマップ ▶'
+        type='long'
+      )
+
 </template>
 
 <script>
@@ -27,6 +32,8 @@ import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
+import CharLink from '~/components/CharLink'
+
 import kari from '~/assets/nagoya.svg'
 export default {
   components: {
@@ -34,6 +41,7 @@ export default {
     SectionWrapper,
     TitleBox,
     ArticleLink,
+    CharLink,
   },
   computed: {
     kari: () => kari

@@ -13,6 +13,12 @@
 
       hr
 
+      char-link(
+        to='/'
+        char='◀ home'
+        type='shrink'
+      )
+      
       prev-next-link(
         v-if='nearbyPosts.prev'
         type='prev'
@@ -76,6 +82,7 @@ import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import PrevNextLink from '~/components/PrevNextLink'
+import CharLink from '~/components/CharLink'
 
 import kari from '~/assets/nagoya.svg'
 export default {
@@ -85,6 +92,7 @@ export default {
     TitleBox,
     ArticleLink,
     PrevNextLink,
+    CharLink,
   },
 
 

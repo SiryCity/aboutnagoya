@@ -25,7 +25,7 @@ export default {
   flex-wrap wrap
   justify-content center
   align-content flex-start
-  border-radius 3px
+  border-radius var(--r)
   box-shadow 0 3px 6px #bbb
 
   &__img
