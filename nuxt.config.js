@@ -34,6 +34,10 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {
+      src: "~/plugins/leaflet",
+      ssr: false
+    }
   ],
 
   /*
@@ -64,5 +68,9 @@ module.exports = {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || require('./.contentful.json').CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID || require('./.contentful.json').CTF_BLOG_POST_TYPE_ID,
     
-  }
+  },
+
+  css: [
+    "leaflet/dist/leaflet.css",
+  ],
 }

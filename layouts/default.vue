@@ -2,6 +2,8 @@
   div
     header-bar
     nuxt
+    footer#footer &copy; 2019 だいたい名古屋
+
 </template>
 
 <script>
@@ -9,7 +11,8 @@ import HeaderBar from '~/components/HeaderBar.vue'
 export default {
   components: {
     HeaderBar
-  }
+  },
+
 }
 </script>
 
@@ -43,5 +46,16 @@ html
 
 body
   margin 0
+
+  #footer
+    width 100%
+    height 30px
+    line-height 28.5px
+    color var(--bgc)
+    background var(--c)
+    text-align center
+    border-top 3px solid var(--gold)
+    box-sizing border-box
+    
 
 </style>

@@ -1,6 +1,6 @@
 <template lang="pug">
   page-wrapper
-  
+
     section-wrapper(pos='left')
       title-box(title='最新の投稿')
       article-link(
@@ -18,6 +18,7 @@
     section-wrapper(pos='right')
       title-box(title='区で調べる')
       title-box(title='地図で調べる')
+      nuxt-link(to='map') test
 </template>
 
 <script>

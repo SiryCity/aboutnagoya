@@ -10,6 +10,7 @@
   width 100%
   height 180px
   border-bottom 5px solid var(--gold)
+  box-sizing border-box
   #header__link
     width 100%
     height 100%
