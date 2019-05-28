@@ -1,8 +1,7 @@
 <template lang="pug">
   div
     header-bar
-    main#root
-      nuxt
+    nuxt
 </template>
 
 <script>
@@ -10,13 +9,11 @@ import HeaderBar from '~/components/HeaderBar.vue'
 export default {
   components: {
     HeaderBar
-
   }
 }
 </script>
 
 <style lang="stylus">
-
 
 :root
   --c #222
@@ -47,8 +44,4 @@ html
 body
   margin 0
 
-#root
-  width 1080px
-  max-width calc(100% - var(--space))
-  margin 40px auto
 </style>

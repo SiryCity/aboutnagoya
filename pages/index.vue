@@ -1,6 +1,7 @@
 <template lang="pug">
-  div
-    section-wrapper(percent=70)
+  page-wrapper
+  
+    section-wrapper(pos='left')
       title-box(title='最新の投稿')
       article-link(
         v-for='(post, i) in posts'
@@ -14,19 +15,21 @@
         :img='kari'
       )
 
-    section-wrapper(percent=30)
+    section-wrapper(pos='right')
       title-box(title='区で調べる')
       title-box(title='地図で調べる')
 </template>
 
 <script>
 import {createClient} from '~/plugins/contentful.js'
+import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import kari from '~/assets/nagoya.svg'
 export default {
   components: {
+    PageWrapper,
     SectionWrapper,
     TitleBox,
     ArticleLink,
@@ -54,7 +57,7 @@ export default {
     }
 
   }
-  
+
 }
 </script>
 

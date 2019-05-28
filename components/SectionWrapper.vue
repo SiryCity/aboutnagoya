@@ -1,11 +1,11 @@
 <template lang="pug">
-  section.section(:style='{"width": `calc(${percent}% - var(--space))`}')
+  section.section(:class='`section--${pos}`')
     slot
 </template>
 
 <script>
 export default {
-  props: ['percent']
+  props: ['pos']
 }
 </script>
 
@@ -19,5 +19,17 @@ export default {
   background #e6e6e6
   border-radius var(--r)
 
-//.section--left
+.section--left
+  width calc(70% - var(--space))
+.section--right
+  width calc(30% - var(--space))
+.section--center
+  width calc(100% - var(--space))
+
+@media screen and (max-width: 1079px)
+  .section--left
+  .section--right
+    width calc(100% - var(--space))
+
+
 </style>

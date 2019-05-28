@@ -1,12 +1,12 @@
 <template lang="pug">
-  div
-    section-wrapper(percent=70)
+  page-wrapper
+    section-wrapper(pos='left')
       title-box(:title='nearbyPosts.curr.title')
       p {{nearbyPosts.curr.subTitle}}
       p {{nearbyPosts.curr.date}}
       p {{nearbyPosts.curr.district}}
       div(v-html='$md.render(nearbyPosts.curr.body)')
-    section-wrapper(percent=30)
+    section-wrapper(pos='right')
       title-box(:title='`${nearbyPosts.curr.district}の投稿`')
       article-link(
         v-for='(post, i) in nearbyPosts.closer'
@@ -37,12 +37,14 @@
 
 <script>
 import {createClient} from '~/plugins/contentful.js'
+import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import kari from '~/assets/nagoya.svg'
 export default {
   components:{
+    PageWrapper,
     SectionWrapper,
     TitleBox,
     ArticleLink,
