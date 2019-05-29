@@ -1,6 +1,7 @@
 <template lang="pug">
   nuxt-link.char-link(
-    :to='makeURL(to)'
+    :to='{name: makeURL(to), params: {district: param ? makeURL(param) : null}}'
+
     :class=`{
       "char-link--long": type === "long",
       "char-link--short": type === "short",
@@ -10,7 +11,7 @@
 
 <script>
 export default {
-  props: ['to', 'char', 'type'],
+  props: ['to', 'char', 'type', 'param'],
 
   methods: {
     makeURL(str){
@@ -18,7 +19,7 @@ export default {
         '南区': 'minami',
         '東区': 'higashi',
       }
-
+      
       const code = str.charCodeAt(0)
 
       return ((code >= 0x4e00 && code <= 0x9fcf)
@@ -26,7 +27,7 @@ export default {
       || (code >= 0x20000 && code <= 0x2a6df)
       || (code >= 0xf900 && code <= 0xfadf)
       || (code >= 0x2f800 && code <= 0x2fa1f))
-        ? (romanDistrict[str] || str)
+        ? romanDistrict[str]
         : str
     },
   }

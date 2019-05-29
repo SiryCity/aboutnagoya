@@ -3,6 +3,17 @@
 
     section-wrapper(pos='left')
       title-box(:title='`${$route.params.district}の投稿`')
+      article-link(
+        v-for='(post, i) in sameDistrictPosts'
+        :key='`post-closer-${i}`'
+
+        :date='post.date'
+        :subTitle='post.subTitle'
+        :title='post.title'
+        :district='post.district'
+
+        :img='kari'
+      )
 
 
       
@@ -17,6 +28,17 @@
       )
 
       title-box(title='最新の投稿')
+      article-link(
+        v-for='(post, i) in posts'
+        :key='`post-latest-${i}`'
+
+        :date='post.date'
+        :subTitle='post.subTitle'
+        :title='post.title'
+        :district='post.district'
+
+        :img='kari'
+      )
 
 </template>
 
@@ -43,6 +65,25 @@ export default {
   },
 
 
+  methods: {
+    makeURL(str){
+      const romanDistrict = {
+        '南区': 'minami',
+        '東区': 'higashi',
+      }
+
+      const code = str.charCodeAt(0)
+
+      return ((code >= 0x4e00 && code <= 0x9fcf)
+      || (code >= 0x3400 && code <= 0x4dbf)
+      || (code >= 0x20000 && code <= 0x2a6df)
+      || (code >= 0xf900 && code <= 0xfadf)
+      || (code >= 0x2f800 && code <= 0x2fa1f))
+        ? (romanDistrict[str] || str)
+        : str
+    },
+  },
+
   async asyncData({env, payload}){
     if(payload) return payload
     const contents = await createClient().getEntries({
@@ -68,7 +109,7 @@ export default {
 
     sameDistrictPosts(){
       return this.posts.filter(post =>
-        post.district.includes(this.$route.params.district))
+        this.makeURL(post.district).includes(this.$route.params.district))
     },
   }
 }

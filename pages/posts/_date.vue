@@ -8,8 +8,14 @@
       )
 
       p {{nearbyPosts.curr.date}}
-      p {{nearbyPosts.curr.district}}
       
+      char-link(
+        :to='"districts-district"'
+        :param='nearbyPosts.curr.district'
+        :char='nearbyPosts.curr.district'
+        type='shrink'
+      )
+
       hr
       
       div(v-html='$md.render(nearbyPosts.curr.body)')
@@ -17,7 +23,7 @@
       hr
 
       char-link(
-        to='/'
+        to='index'
         char='◀ home'
         type='shrink'
       )
