@@ -2,7 +2,7 @@
   page-wrapper
 
     section-wrapper(pos='left')
-      title-box(:title='"南区の投稿"')
+      title-box(:title='`${$route.params.district}の投稿`')
 
 
       
@@ -10,6 +10,11 @@
     section-wrapper(pos='right')
 
       title-box(title='地図で調べる')
+      char-link(
+        to='map'
+        char='だいたいマップ ▶'
+        type='long'
+      )
 
       title-box(title='最新の投稿')
 
@@ -59,7 +64,12 @@ export default {
   },
 
   computed:{
-    kari: () => kari
+    kari: () => kari,
+
+    sameDistrictPosts(){
+      return this.posts.filter(post =>
+        post.district.includes(this.$route.params.district))
+    },
   }
 }
 </script>

@@ -1,13 +1,35 @@
 <template lang="pug">
   nuxt-link.char-link(
-    :to='to'
-    :class='{"char-link--long": type === "long"}'
+    :to='makeURL(to)'
+    :class=`{
+      "char-link--long": type === "long",
+      "char-link--short": type === "short",
+    }`
   ) {{char}}
 </template>
 
 <script>
 export default {
-  props: ['to', 'char', 'type']
+  props: ['to', 'char', 'type'],
+
+  methods: {
+    makeURL(str){
+      const romanDistrict = {
+        '南区': 'minami',
+        '東区': 'higashi',
+      }
+
+      const code = str.charCodeAt(0)
+
+      return ((code >= 0x4e00 && code <= 0x9fcf)
+      || (code >= 0x3400 && code <= 0x4dbf)
+      || (code >= 0x20000 && code <= 0x2a6df)
+      || (code >= 0xf900 && code <= 0xfadf)
+      || (code >= 0x2f800 && code <= 0x2fa1f))
+        ? (romanDistrict[str] || str)
+        : str
+    },
+  }
 }
 </script>
 
@@ -16,8 +38,8 @@ export default {
 .char-link
   color var(--c)
   text-decoration none
-  height 40px
-  line-height 32px
+  height 32px
+  line-height 24px
   padding 4px 6px
   box-shadow 0 3px 6px #bbb
   border-radius var(--r)
@@ -29,4 +51,6 @@ export default {
 
 .char-link--long
   width 100%
+.char-link--short
+  width 25%
 </style>

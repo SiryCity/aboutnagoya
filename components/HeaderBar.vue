@@ -2,7 +2,7 @@
   header#header
     nuxt-link#header__link(to='/')
       h1 だいたい名古屋
-      p 名古屋のだいたいのイメージを発信。
+      p 生粋の名古屋人が名古屋の「だいたい」を発信。
 </template>
 
 <style lang="stylus" scoped>
@@ -11,7 +11,7 @@
   height 180px
   border-bottom 5px solid var(--gold)
   box-sizing border-box
-  #header__link
+  &__link
     width 100%
     height 100%
     color var(--bgc)

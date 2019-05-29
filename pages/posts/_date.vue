@@ -2,13 +2,16 @@
   page-wrapper
 
     section-wrapper(pos='left')
-      title-box(:title='nearbyPosts.curr.title')
+      title-box(
+        :title='nearbyPosts.curr.title'
+        :subTitle='nearbyPosts.curr.subTitle'
+      )
 
-      hr
-      
-      p {{nearbyPosts.curr.subTitle}}
       p {{nearbyPosts.curr.date}}
       p {{nearbyPosts.curr.district}}
+      
+      hr
+      
       div(v-html='$md.render(nearbyPosts.curr.body)')
 
       hr

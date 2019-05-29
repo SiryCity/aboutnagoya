@@ -3,7 +3,7 @@
     img.article-link__img(:src='img')
     div.article-link__meta {{date}} {{district}}
     h3.article-link__title {{title}}
-    h4.article-link__sub-title {{subTitle}}
+    h4.article-link__sub-title - {{subTitle}}
 </template>
 
 <script>
