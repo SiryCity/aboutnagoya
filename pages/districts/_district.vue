@@ -2,7 +2,7 @@
   page-wrapper
 
     section-wrapper(pos='left')
-      title-box(:title='`${$route.params.district}の投稿`')
+      title-box(:title='`${perthURL($route.params.district)}の投稿`')
       article-link(
         v-for='(post, i) in sameDistrictPosts'
         :key='`post-closer-${i}`'
@@ -14,8 +14,6 @@
 
         :img='kari'
       )
-
-
       
 
     section-wrapper(pos='right')
@@ -64,23 +62,46 @@ export default {
     CharLink,
   },
 
+  data: () =>
+    ({
+      romanDistrict: {
+        '熱田区': 'atsuta',
+        '北区': 'kita',
+        '昭和区': 'showa',
+        '千種区': 'chikusa',
+        '天白区': 'tenpaku',
+        '中区': 'naka',
+        '中川区': 'nakagawa',
+        '中村区': 'nakamura',
+        '西区': 'nishi',
+        '東区': 'higashi',
+        '瑞穂': 'mizuho',
+        '緑区': 'midori',
+        '港区': 'minato',
+        '南区': 'minami',
+        '名東区': 'meito',
+        '守山区': 'moriyama',
+      }
+    }),
 
   methods: {
-    makeURL(str){
-      const romanDistrict = {
-        '南区': 'minami',
-        '東区': 'higashi',
-      }
+    makeURL(district){
 
-      const code = str.charCodeAt(0)
+      const code = district.charCodeAt(0)
 
       return ((code >= 0x4e00 && code <= 0x9fcf)
       || (code >= 0x3400 && code <= 0x4dbf)
       || (code >= 0x20000 && code <= 0x2a6df)
       || (code >= 0xf900 && code <= 0xfadf)
       || (code >= 0x2f800 && code <= 0x2fa1f))
-        ? (romanDistrict[str] || str)
-        : str
+        ? this.romanDistrict[district]
+        : district
+    },
+
+    perthURL(URL){
+      return Object.entries(this.romanDistrict).find(district =>
+        district[1] === URL
+      )[0]
     },
   },
 
@@ -109,7 +130,7 @@ export default {
 
     sameDistrictPosts(){
       return this.posts.filter(post =>
-        this.makeURL(post.district).includes(this.$route.params.district))
+        this.makeURL(post.district) === this.$route.params.district)
     },
   }
 }

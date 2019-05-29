@@ -10,7 +10,7 @@
       p {{nearbyPosts.curr.date}}
       
       char-link(
-        :to='"districts-district"'
+        to='districts-district'
         :param='nearbyPosts.curr.district'
         :char='nearbyPosts.curr.district'
         type='shrink'
