@@ -11,7 +11,7 @@
       
       char-link(
         to='districts-district'
-        :param='nearbyPosts.curr.district'
+        :district='nearbyPosts.curr.district'
         :char='nearbyPosts.curr.district'
         type='shrink'
       )

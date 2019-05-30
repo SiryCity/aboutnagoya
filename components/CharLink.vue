@@ -3,44 +3,26 @@
     :to=`{
       name: makeURL(to),
       params: {
-        district: param
-          ? makeURL(param)
-          : null
+        district: district
+          ? makeURL(district)
+          : null,
+
+        coords: null
+
       }
     }`
 
     :class=`{
       "char-link--long": type === "long",
       "char-link--short": type === "short",
+      "char-link--shrink": type === "shrink",
     }`
   ) {{char}}
 </template>
 
 <script>
 export default {
-  props: ['to', 'char', 'type', 'param'],
-
-  data: () =>
-    ({
-      romanDistrict: {
-        '熱田区': 'atsuta',
-        '北区': 'kita',
-        '昭和区': 'showa',
-        '千種区': 'chikusa',
-        '天白区': 'tenpaku',
-        '中区': 'naka',
-        '中川区': 'nakagawa',
-        '中村区': 'nakamura',
-        '西区': 'nishi',
-        '東区': 'higashi',
-        '瑞穂': 'mizuho',
-        '緑区': 'midori',
-        '港区': 'minato',
-        '南区': 'minami',
-        '名東区': 'meito',
-        '守山区': 'moriyama',
-      }
-    }),
+  props: ['to', 'char', 'type', 'district', 'coords'],
 
   methods: {
     makeURL(district){
@@ -52,7 +34,7 @@ export default {
       || (code >= 0x20000 && code <= 0x2a6df)
       || (code >= 0xf900 && code <= 0xfadf)
       || (code >= 0x2f800 && code <= 0x2fa1f))
-        ? this.romanDistrict[district]
+        ? this.$store.getters['main/romanDistrict'][district]
         : district
     },
   }
@@ -67,16 +49,19 @@ export default {
   height 32px
   line-height 24px
   padding 4px 6px
-  box-shadow 0 3px 6px #bbb
+  box-shadow 0 2px 4px #bbb
   border-radius var(--r)
   border 1.5px var(--c) solid
   display inline-block
   box-sizing border-box
   text-align center
-  margin var(--margin) 4px var(--margin) 0
 
 .char-link--long
   width 100%
+  margin var(--margin) 4px var(--margin) 0
 .char-link--short
-  width 25%
+  width 23%
+  margin 4px 1%
+.char-link--shrink
+  margin var(--margin) 4px var(--margin) 0
 </style>

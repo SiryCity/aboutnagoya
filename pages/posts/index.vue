@@ -17,6 +17,14 @@
 
     section-wrapper(pos='right')
       title-box(title='区で調べる')
+      char-link(
+        v-for='(district, i) in Object.entries($store.getters["main/romanDistrict"])'
+        :key='`district-${i}`'
+        to='districts-district'
+        :param='district[0]'
+        :char='district[0]'
+        type='short'
+      )
       title-box(title='地図で調べる')
       char-link(
         to='map'

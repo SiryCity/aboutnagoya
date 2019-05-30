@@ -3,7 +3,7 @@
     section-wrapper(pos='center')
       title-box(title='だいたいマップ')
       char-link(
-        to='/'
+        to='index'
         char='◀ home'
         type='shrink'
       )
