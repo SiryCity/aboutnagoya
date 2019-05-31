@@ -12,11 +12,7 @@
       }
     }`
 
-    :class=`{
-      "char-link--long": type === "long",
-      "char-link--short": type === "short",
-      "char-link--shrink": type === "shrink",
-    }`
+    :class='`char-link--${type}`'
   ) {{char}}
 </template>
 
