@@ -7,7 +7,7 @@
           ? makeURL(district)
           : null,
 
-        coords: null
+        coords: coords || null
 
       }
     }`
@@ -59,5 +59,6 @@ export default {
   width 23%
   margin 4px 1%
 .char-link--shrink
+  width auto
   margin var(--margin) 4px var(--margin) 0
 </style>

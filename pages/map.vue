@@ -8,9 +8,24 @@
         type='shrink'
       )
 
+
       div.leaflet__wrapper
         no-ssr
-          l-map.mini-map(:zoom='12' :center='[35.153, 136.928]')
+          l-map.mini-map(
+            :zoom=`
+              $route.params.coords
+                ? 18
+                : 12
+            `
+            :center=`[
+              $route.params.coords
+                ? $route.params.coords.lat
+                : 35.153,
+              $route.params.coords
+                ? $route.params.coords.lon
+                : 136.928,
+            ]`
+          )
             l-tile-layer(url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}')
 
 </template>
