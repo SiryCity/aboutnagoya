@@ -14,7 +14,7 @@
           l-map.mini-map(
             :zoom=`
               $route.params.coords
-                ? 18
+                ? 16
                 : 12
             `
             :center=`[
@@ -32,6 +32,10 @@
               v-for='(post, i) in posts'
               :key='`map-post-${i}`'
               :lat-lng='[post.coords.lat, post.coords.lon]'
+
+              radius=300
+              color='#666'
+              fillColor='#cbf442'
             )
 
 </template>
@@ -79,5 +83,6 @@ export default {
   height 100vh
   box-sizing border-box
   border 2px solid var(--gold)
+
 
 </style>

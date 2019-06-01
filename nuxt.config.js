@@ -34,16 +34,13 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {
-      src: "~/plugins/leaflet",
-      ssr: false
-    }
   ],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-leaflet',
     '@nuxtjs/markdownit',
     '@nuxtjs/dotenv',
   ],
@@ -70,7 +67,4 @@ module.exports = {
     
   },
 
-  css: [
-    "leaflet/dist/leaflet.css",
-  ],
 }

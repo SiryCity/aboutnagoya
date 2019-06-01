@@ -16,13 +16,12 @@
     "contentful": "^7.6.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
-    "leaflet": "^1.5.1",
     "nuxt": "^2.4.0",
+    "nuxt-leaflet": "^0.0.19",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
-    "vue2-leaflet": "^2.1.1"
+    "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
