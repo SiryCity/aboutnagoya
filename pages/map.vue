@@ -28,10 +28,17 @@
           )
             l-tile-layer(url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}')
 
+            l-circle(
+              v-for='(post, i) in posts'
+              :key='`map-post-${i}`'
+              :lat-lng='[post.coords.lat, post.coords.lon]'
+            )
+
 </template>
 
 
 <script>
+import {createClient} from '~/plugins/contentful.js'
 import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
@@ -42,7 +49,26 @@ export default {
     SectionWrapper,
     TitleBox,
     CharLink,
-  }
+  },
+
+
+  async asyncData({env, payload}){
+    if(payload) return payload
+    const contents = await createClient().getEntries({
+      'content_type': env.CTF_BLOG_POST_TYPE_ID,
+      order: '-fields.date',
+    })
+
+    return {
+      posts: contents.items.map(item => 
+        ({
+          title: item.fields.title,
+          coords: item.fields.coords,
+        })
+      )
+    }
+
+  },
 }
 </script>
 

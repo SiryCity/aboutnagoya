@@ -7,14 +7,16 @@
         :subTitle='nearbyPosts.curr.subTitle'
       )
 
-      right-justify: p {{nearbyPosts.curr.date}}
+      right-justify
+        p {{nearbyPosts.curr.date}}
       
-      right-justify: char-link(
-        to='districts-district'
-        :district='nearbyPosts.curr.district'
-        :char='nearbyPosts.curr.district'
-        type='shrink'
-      )
+      right-justify
+        char-link(
+          to='districts-district'
+          :district='nearbyPosts.curr.district'
+          :char='nearbyPosts.curr.district'
+          type='shrink'
+        )
 
       hr
       
