@@ -8,8 +8,9 @@
         type='shrink'
       )
 
+      div.leaflet__wrapper(ref='leaflet__wrapper')
 
-      div.leaflet__wrapper
+      //-
         no-ssr
           l-map.mini-map(
             :zoom=`
@@ -33,7 +34,7 @@
               :key='`map-post-${i}`'
               :lat-lng='[post.coords.lat, post.coords.lon]'
 
-              radius=300
+              :radius='300'
               color='#666'
               fillColor='#cbf442'
             )
@@ -47,6 +48,8 @@ import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import CharLink from '~/components/CharLink'
+import "leaflet/dist/leaflet.css"
+
 export default {
   components:{
     PageWrapper,
@@ -73,7 +76,32 @@ export default {
     }
 
   },
+
+  mounted(){
+
+      const L = require('leaflet')
+
+      const latLng = this.$route.params.lat
+        ? [this.$route.params.coords.lat, this.$route.params.coords.lon]
+        : [35.153, 136.928]
+
+      const zoom = this.$route.params.lat
+        ? 16
+        : 12
+        
+      const ref = this.$refs['leaflet__wrapper']
+
+      console.dir(this.posts)
+
+      const map = L.map(ref, {center: L.latLng(latLng), zoom}).addLayer(
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}')
+      )
+      
+  },
+
+
 }
+
 </script>
 
 
