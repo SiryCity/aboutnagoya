@@ -48,7 +48,6 @@ import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import CharLink from '~/components/CharLink'
-import "leaflet/dist/leaflet.css"
 
 export default {
   components:{
@@ -81,21 +80,56 @@ export default {
 
       const L = require('leaflet')
 
-      const latLng = this.$route.params.lat
-        ? [this.$route.params.coords.lat, this.$route.params.coords.lon]
-        : [35.153, 136.928]
+      const ref = this.$refs['leaflet__wrapper']
+
+      const center = L.latLng(
+        this.$route.params.lat
+          ? [this.$route.params.coords.lat, this.$route.params.coords.lon]
+          : [35.153, 136.928]
+      )
 
       const zoom = this.$route.params.lat
         ? 16
         : 12
-        
-      const ref = this.$refs['leaflet__wrapper']
 
-      console.dir(this.posts)
-
-      const map = L.map(ref, {center: L.latLng(latLng), zoom}).addLayer(
+      const map = L.map(ref, {center, zoom}).addLayer(
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}')
       )
+
+      this.posts.forEach( post => {
+        
+        const coords = [post.coords.lat, post.coords.lon]
+        const icon = L.divIcon({
+          html: post.title.replace('だいたい', ''),
+          className: 'div-icon',
+          iconSize: [160, 16]
+        })
+
+        L.marker(
+          coords,
+          {icon}
+        ).addTo(map)
+
+        L.circle(
+          coords,
+          200,
+          {
+            color: '#666',
+            fillColor: '#cbf442',
+          className: 'circle circle1',
+          }
+        ).addTo(map)
+
+
+        document.querySelectorAll('.circle').forEach(el =>{
+          el.addEventListener('click', e =>{
+              console.log(e)
+          })
+        })
+
+      })
+
+
       
   },
 
@@ -112,5 +146,9 @@ export default {
   box-sizing border-box
   border 2px solid var(--gold)
 
+.div-icon
+  color var(--c)
+  text-align center
+  pointer-events none !important
 
 </style>
