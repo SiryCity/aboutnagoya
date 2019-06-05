@@ -2,7 +2,7 @@
   div
     header-bar
     nuxt
-    footer#footer &copy; 2019 だいたい名古屋
+    footer.footer(:class='{"footer--map": $route.path.includes("map")}') &copy; 2019 だいたい名古屋
 
 </template>
 
@@ -22,6 +22,7 @@ export default {
   --c #222
   --bgc #ddd
   --gold #cbf442
+  --blue #4341f4
 
   --space 15px
   --r 3px
@@ -47,7 +48,7 @@ html
 body
   margin 0
 
-  #footer
+  .footer
     width 100%
     height 30px
     line-height 28.5px
@@ -57,5 +58,6 @@ body
     border-top 3px solid var(--gold)
     box-sizing border-box
     
-
+  .footer--map
+    border-top 3px solid var(--blue)
 </style>

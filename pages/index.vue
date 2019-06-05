@@ -17,20 +17,22 @@
 
     section-wrapper(pos='right')
       title-box(title='区で調べる')
-      char-link(
-        v-for='(district, i) in Object.keys($store.getters["main/romanDistrict"])'
-        :key='`district-${i}`'
-        to='districts-district'
-        :district='district'
-        :char='district'
-        type='short'
-      )
+      justify-tags
+        char-link(
+          v-for='(district, i) in Object.keys($store.getters["main/romanDistrict"])'
+          :key='`district-${i}`'
+          to='districts-district'
+          :district='district'
+          :char='district'
+          type='short'
+        )
 
       title-box(title='地図で調べる')
       char-link(
         to='map'
         char='だいたいマップ ▶'
         type='long'
+        :blue='true'
       )
 
 </template>
@@ -42,6 +44,7 @@ import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import CharLink from '~/components/CharLink'
+import JustifyTags from '~/components/JustifyTags'
 
 import kari from '~/assets/nagoya.svg'
 export default {
@@ -51,6 +54,7 @@ export default {
     TitleBox,
     ArticleLink,
     CharLink,
+    JustifyTags,
   },
   computed: {
     kari: () => kari

@@ -13,12 +13,13 @@
     }`
 
     :class='`char-link--${type}`'
+    :style='{"background": blue ? "#aeaded": "unset"}'
   ) {{char}}
 </template>
 
 <script>
 export default {
-  props: ['to', 'char', 'type', 'district', 'coords'],
+  props: ['to', 'char', 'type', 'district', 'coords', 'blue'],
 
   methods: {
     makeURL(district){
@@ -54,11 +55,9 @@ export default {
 
 .char-link--long
   width 100%
-  margin var(--margin) 4px var(--margin) 0
 .char-link--short
   width 23%
-  margin 4px 1%
 .char-link--shrink
   width auto
-  margin var(--margin) 4px var(--margin) 0
+
 </style>

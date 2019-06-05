@@ -1,12 +1,12 @@
 <template lang="pug">
-  div.heading
+  div.heading(:class='{"heading--map": blue}')
     h2.heading__title {{title}}
     h3.heading__sub-title(v-if='subTitle') - {{subTitle}}
 </template>
 
 <script>
 export default {
-  props:['title', 'subTitle']
+  props:['title', 'subTitle', 'blue']
 }
 </script>
 
@@ -40,4 +40,6 @@ export default {
     padding 0
     font-weight normal
 
+.heading--map
+  border-bottom 5px solid var(--blue)
 </style>

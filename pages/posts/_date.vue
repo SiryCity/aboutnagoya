@@ -7,10 +7,9 @@
         :subTitle='nearbyPosts.curr.subTitle'
       )
 
-      right-justify
+      justify-tags
         p {{nearbyPosts.curr.date}}
       
-      right-justify
         char-link(
           to='districts-district'
           :district='nearbyPosts.curr.district'
@@ -24,20 +23,20 @@
 
       hr
 
-      right-justify
+      justify-tags
         char-link(
           to='map'
           char='だいたいマップで見る'
           type='shrink'
           :coords='nearbyPosts.curr.coords'
+          :blue='true'
         )
 
-      
-      char-link(
-        to='index'
-        char='◀ home'
-        type='shrink'
-      )
+        char-link(
+          to='index'
+          char='◀ home'
+          type='shrink'
+        )
       
       prev-next-link(
         v-if='nearbyPosts.prev'
@@ -103,7 +102,7 @@ import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import PrevNextLink from '~/components/PrevNextLink'
 import CharLink from '~/components/CharLink'
-import RightJustify from '~/components/RightJustify'
+import JustifyTags from '~/components/JustifyTags'
 
 import kari from '~/assets/nagoya.svg'
 export default {
@@ -114,7 +113,7 @@ export default {
     ArticleLink,
     PrevNextLink,
     CharLink,
-    RightJustify
+    JustifyTags
   },
 
 
