@@ -7,6 +7,7 @@
         :subTitle='nearbyPosts.curr.subTitle'
       )
 
+      s-n-s-box
       justify-tags
         p {{nearbyPosts.curr.date}}
       
@@ -24,9 +25,17 @@
       hr
 
       justify-tags
+
         char-link(
           to='map'
           char='だいたいマップで見る'
+          type='shrink'
+          :coords='nearbyPosts.curr.coords'
+          :blue='true'
+        )
+        g-maps(
+          :to='`https://www.google.co.jp/maps/@${nearbyPosts.curr.coords.lat},${nearbyPosts.curr.coords.lon},15z`'
+          char='Google Mapsで見る'
           type='shrink'
           :coords='nearbyPosts.curr.coords'
           :blue='true'
@@ -102,7 +111,9 @@ import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import PrevNextLink from '~/components/PrevNextLink'
 import CharLink from '~/components/CharLink'
+import GMaps from '~/components/GMaps'
 import JustifyTags from '~/components/JustifyTags'
+import SNSBox from '~/components/SNSBox.vue'
 
 import kari from '~/assets/nagoya.svg'
 export default {
@@ -113,7 +124,9 @@ export default {
     ArticleLink,
     PrevNextLink,
     CharLink,
-    JustifyTags
+    GMaps,
+    JustifyTags,
+    SNSBox,
   },
 
 
