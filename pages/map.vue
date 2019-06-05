@@ -121,13 +121,14 @@ export default {
           }
         ).addTo(map)
 
-        document.querySelector(`.circle-${i}`).addEventListener('click', ()=>{
-          console.dir(post.date)
+
+        document.querySelector(`.circle-${i}`).addEventListener('click', () =>{
+          this.$router.push({name:'posts-date', params:{date: post.date}})
         })
 
-
       })
-  }
+  },
+
 
 }
 
