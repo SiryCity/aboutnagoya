@@ -48,6 +48,11 @@ import JustifyTags from '~/components/JustifyTags'
 
 import kari from '~/assets/nagoya.svg'
 export default {
+  head: () =>
+    ({
+      title: 'だいたい名古屋',
+      titleTemplate: null,
+    }),
   components: {
     PageWrapper,
     SectionWrapper,

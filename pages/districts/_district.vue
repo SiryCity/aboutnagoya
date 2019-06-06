@@ -50,9 +50,21 @@ import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import PrevNextLink from '~/components/PrevNextLink'
 import CharLink from '~/components/CharLink'
+import Meta from '~/assets/mixins/meta.js'
 
 import kari from '~/assets/nagoya.svg'
 export default {
+  mixins: [Meta],
+  data(){ 
+    return {
+      meta: {
+        title: `${this.perthURL(this.$route.params.district)}`,
+        type: 'article',
+        url: this.currentUrl,
+      },
+      currentUrl: null
+    }
+  },
   components:{
     PageWrapper,
     SectionWrapper,
@@ -110,6 +122,7 @@ export default {
       return this.posts.filter(post =>
         this.makeURL(post.district) === this.$route.params.district)
     },
-  }
+  },
+
 }
 </script>

@@ -20,7 +20,7 @@
 
       hr
       
-      div(v-html='$md.render(nearbyPosts.curr.body)')
+      div.posts__body(v-html='$md.render(nearbyPosts.curr.body)')
 
       hr
 
@@ -114,9 +114,18 @@ import CharLink from '~/components/CharLink'
 import GMaps from '~/components/GMaps'
 import JustifyTags from '~/components/JustifyTags'
 import SNSBox from '~/components/SNSBox.vue'
+import Meta from '~/assets/mixins/meta.js'
 
 import kari from '~/assets/nagoya.svg'
 export default {
+  mixins: [Meta],
+  head(){ 
+    return {
+      title: this.nearbyPosts.curr.title.replace('だいたい', ''),
+      type: 'article',
+      url: this.currentUrl,
+    }
+  },
   components:{
     PageWrapper,
     SectionWrapper,
@@ -176,7 +185,46 @@ export default {
       , null)
     },
 
-    kari: () => kari
+    kari: () => kari,
+
+    data: () =>
+      ({
+        currentUrl: null
+      }),
+    mounted(){
+      this.currentUrl = location.href
+    }
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.posts__body
+  width 100%
+  line-height 1.8
+  >>> a
+    color var(--c)
+    text-decoration none
+    &:hover
+      text-decoration underline
+  >>> h2
+    font-size 22px
+    margin 50px 0 20px
+    border-left 5px solid var(--gold)
+    padding-left 5px
+    box-sizing border-box
+    
+  >>> h3
+    font-size 18px
+    margin 20px 0 10px
+    border-left 3px solid var(--gold)
+    padding-left 3px
+    box-sizing border-box
+  >>> pre
+    margin 20px 0 30px
+    code
+      overflow scroll
+  >>> ol
+    margin 50px 0
+
+</style>

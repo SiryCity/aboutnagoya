@@ -13,7 +13,7 @@ export default {
 
 <style lang="stylus" scoped>
 .g-maps
-  color var(--b)
+  color var(--bgc)
   text-decoration none
   height 32px
   line-height 24px

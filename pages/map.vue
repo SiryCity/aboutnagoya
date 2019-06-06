@@ -2,12 +2,13 @@
   page-wrapper
     section-wrapper(pos='center')
       title-box(title='だいたいマップ' :blue='true')
-      char-link(
-        to='index'
-        char='◀ home'
-        type='shrink'
-      )
       div.leaflet__wrapper(ref='leaflet__wrapper')
+      justify-tags
+        char-link(
+          to='index'
+          char='◀ home'
+          type='shrink'
+        )
 
 </template>
 
@@ -18,13 +19,22 @@ import PageWrapper from '~/components/PageWrapper'
 import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 import CharLink from '~/components/CharLink'
+import JustifyTags from '~/components/JustifyTags'
 
 export default {
+    head(){ 
+      return {
+        title: 'だいたいマップ',
+        type: 'website',
+        url: this.currentUrl,
+      }
+    },
   components:{
     PageWrapper,
     SectionWrapper,
     TitleBox,
     CharLink,
+    JustifyTags
   },
 
 
@@ -99,6 +109,13 @@ export default {
       })
   },
 
+  data: () =>
+    ({
+      currentUrl: null
+    }),
+  mounted(){
+    this.currentUrl = location.href
+  }
 
 }
 
