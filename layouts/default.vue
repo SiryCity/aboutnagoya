@@ -41,6 +41,7 @@ html
   box-sizing border-box
   background var(--bgc)
   color var(--c)
+
 *
 *before
 *after

@@ -8,6 +8,7 @@
 .page-wrapper
   width 1080px
   max-width calc(100% - var(--space))
+  min-height 100vh
   margin 40px auto
   display flex
   flex-wrap wrap
