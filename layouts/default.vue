@@ -2,15 +2,17 @@
   div
     header-bar
     nuxt
-    footer.footer(:class='{"footer--map": $route.path.includes("map")}') &copy; 2019 だいたい名古屋
+    footer-bar
 
 </template>
 
 <script>
 import HeaderBar from '~/components/HeaderBar.vue'
+import FooterBar from '~/components/FooterBar.vue'
 export default {
   components: {
-    HeaderBar
+    HeaderBar,
+    FooterBar,
   },
 
 }
@@ -48,16 +50,4 @@ html
 body
   margin 0
 
-  .footer
-    width 100%
-    height 30px
-    line-height 28.5px
-    color var(--bgc)
-    background var(--c)
-    text-align center
-    border-top 3px solid var(--gold)
-    box-sizing border-box
-    
-  .footer--map
-    border-top 3px solid var(--blue)
 </style>

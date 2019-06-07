@@ -209,16 +209,17 @@ export default {
       text-decoration underline
   >>> h2
     font-size 22px
-    margin 50px 0 20px
-    border-left 5px solid var(--gold)
-    padding-left 5px
+    margin 50px 0 20px 10px
+    border-left 3px solid var(--gold)
+    padding-left 10px
     box-sizing border-box
+    box-shadow -8px 0 0 0 var(--c)
     
   >>> h3
     font-size 18px
     margin 20px 0 10px
-    border-left 3px solid var(--gold)
-    padding-left 3px
+    border-left 3px solid var(--c)
+    padding-left 5px
     box-sizing border-box
   >>> pre
     margin 20px 0 30px

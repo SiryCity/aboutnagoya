@@ -22,13 +22,10 @@ import CharLink from '~/components/CharLink'
 import JustifyTags from '~/components/JustifyTags'
 
 export default {
-    head(){ 
-      return {
-        title: 'だいたいマップ',
-        type: 'website',
-        url: this.currentUrl,
-      }
-    },
+  head:{
+    title: 'だいたいマップ',
+    type: 'website',
+  },
   components:{
     PageWrapper,
     SectionWrapper,
@@ -108,15 +105,6 @@ export default {
 
       })
   },
-
-  data: () =>
-    ({
-      currentUrl: null
-    }),
-  mounted(){
-    this.currentUrl = location.href
-  }
-
 }
 
 </script>

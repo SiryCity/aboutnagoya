@@ -11,11 +11,11 @@
   height 180px
   border-bottom 5px solid var(--gold)
   box-sizing border-box
+  background var(--c)
   &__link
     width 100%
     height 100%
     color var(--bgc)
-    background var(--c)
     text-decoration none
     display flex
     flex-direction column
