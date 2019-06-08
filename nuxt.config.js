@@ -56,6 +56,12 @@ module.exports = {
     '@nuxtjs/markdownit',
     '@nuxtjs/dotenv',
     '@nuxtjs/sitemap',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: process.env.GA_ID || require('./.contentful.json').GA_ID
+      },
+    ],
   ],
 
   /*
