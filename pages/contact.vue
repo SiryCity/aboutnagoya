@@ -2,6 +2,14 @@
   page-wrapper
     section-wrapper(pos='center')
       title-box(title='お問い合わせ')
+      iframe(
+        :src='apiKey',
+        width='100%',
+        height='720px',
+        frameborder='0',
+        marginheight='0',
+        marginwidth='0'
+      ) 読み込んでいます...
 </template>
 
 <script>
@@ -19,5 +27,9 @@ export default {
     SectionWrapper,
     TitleBox,
   },
+  asyncData: context =>
+    ({
+      apiKey:`https://docs.google.com/forms/d/e/${context.env.FORMS_API}/viewform?embedded=true`
+    }),
 }
 </script>
