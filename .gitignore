@@ -85,3 +85,8 @@ sw.*
 
 .env
 .contentful.json
+
+app.yaml
+secret.yaml
+
+.gcloudignore
