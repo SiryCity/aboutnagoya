@@ -12,7 +12,19 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+
+      { hid: 'og:site_name', property: 'og:site_name', content: 'だいたい名古屋' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://daitai.nagoya' },
+      { hid: 'og:title', property: 'og:title', content: 'だいたい名古屋' },
+      { hid: 'og:description', property: 'og:description', content: '生粋の名古屋人が名古屋の「だいたい」を発信。' },
+      { hid: 'og:image', property: 'og:image', content: 'https://daitai.nagoya/ogp-image.png'},
+
+
+      { name: "robots", content: "noindex" },
+      { name: "robots", content: "nofollow" },
+      { name: "robots", content: "noachieve" },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -43,6 +55,7 @@ module.exports = {
     'nuxt-leaflet',
     '@nuxtjs/markdownit',
     '@nuxtjs/dotenv',
+    '@nuxtjs/sitemap',
   ],
 
   /*
@@ -65,6 +78,13 @@ module.exports = {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || require('./.contentful.json').CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID || require('./.contentful.json').CTF_BLOG_POST_TYPE_ID,
     FORMS_API: process.env.FORMS_API,
+  },
+
+  sitemap: {
+    path: 'sitemap.xml',
+    hostname: 'https://daitai.nagoya',
+    cacheTime: 1000 * 60 * 15,
+    generate: false,
   },
 
 }
