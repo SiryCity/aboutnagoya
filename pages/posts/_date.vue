@@ -19,8 +19,15 @@
         )
 
       hr
-      
-      div.posts__body(v-html='$md.render(nearbyPosts.curr.body)')
+
+      h2.posts_default-tag 概要
+      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyAbout)')
+      h2.posts_default-tag 地理
+      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyGeography)')
+      h2.posts_default-tag 人
+      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyPeople)')
+      h2.posts_default-tag 結論
+      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyConclusion)')
 
       hr
 
@@ -154,7 +161,11 @@ export default {
           date: item.fields.date.split('T')[0],
           district: item.fields.district,
           
-          body: item.fields.body,
+          bodyAbout: item.fields.bodyAbout,
+          bodyGeography: item.fields.bodyGeography,
+          bodyPeople: item.fields.bodyPeople,
+          bodyConclusion: item.fields.bodyConclusion,
+
           coords: item.fields.coords,
         })
       )
@@ -228,4 +239,11 @@ export default {
   >>> ol
     margin 50px 0
 
+.posts_default-tag
+  font-size 22px
+  margin 50px 0 20px 10px
+  border-left 3px solid var(--gold)
+  padding-left 10px
+  box-sizing border-box
+  box-shadow -8px 0 0 0 var(--c)
 </style>
