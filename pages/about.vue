@@ -23,6 +23,10 @@ export default {
   },
   computed:{
     about: () => about,
+  },
+
+  created(){
+    this.$store.dispatch('contentful/fetchData')
   }
 }
 </script>
