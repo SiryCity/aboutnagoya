@@ -4,40 +4,46 @@ export const actions = {
 
   async fetchContents({commit}){
     
-    const allContents = await createClient().getEntries({
+    const contents = await createClient().getEntries({
       'content_type': process.env.CTF_BLOG_POST_TYPE_ID,
       order: '-fields.date',
     })
 
-    commit('moldContents', allContents)
+    commit('getPosts', contents)
   }
 }
 
 
 export const mutations = {
-  moldContents(state, allContents){
+  getPosts(state, contents){
 
-    const usingContents = allContents.items.map(p => p.fields)
+    const posts = contents.items.map(p => p.fields)
 
-    state.contents = usingContents
+    state.posts = posts
   }
 }
 
 export const state = () =>
   ({
-    contents: null
+    posts: null
   })
 
 export const getters = {
-  contentsByIndex: ({contents}) =>
-    contents && contents.map(post =>
+  indexPosts: ({posts}) =>
+    posts && posts.map(post =>
       ({
         title: post.title,
         subTitle: post.subTitle,
-        date: post.date,
+        date: post.date.split('T')[0],
         district: post.district,
       })
     ),
 
+  sameDistrictPosts: ({posts}, _, rootGetters) =>
+    district =>
+      posts.filter(post =>
+        rootGetters.main.makeURL(post.district) === district),
+
+  
   
 }

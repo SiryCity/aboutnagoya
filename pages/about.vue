@@ -26,9 +26,9 @@ export default {
   },
 
   created(){
-    this.$store.state.contentful.contents
+    this.$store.state.contentful.posts
     || this.$store.dispatch('contentful/fetchContents')
-  }
+  },
 }
 </script>
 

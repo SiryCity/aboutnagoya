@@ -17,5 +17,19 @@ export const getters = {
       '南区': 'minami',
       '名東区': 'meito',
       '守山区': 'moriyama',
-    })
+    }),
+
+    makeURL:(_, getters) =>
+      district => {
+      
+        const code = district.charCodeAt(0)
+
+        return ((code >= 0x4e00 && code <= 0x9fcf)
+        || (code >= 0x3400 && code <= 0x4dbf)
+        || (code >= 0x20000 && code <= 0x2a6df)
+        || (code >= 0xf900 && code <= 0xfadf)
+        || (code >= 0x2f800 && code <= 0x2fa1f))
+          ? getters.romanDistrict[district]
+          : district
+      },
 }
