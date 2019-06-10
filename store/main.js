@@ -19,7 +19,7 @@ export const getters = {
       '守山区': 'moriyama',
     }),
 
-    makeURL:(_, getters) =>
+    makeURL: (_, getters) =>
       district => {
       
         const code = district.charCodeAt(0)
@@ -32,4 +32,10 @@ export const getters = {
           ? getters.romanDistrict[district]
           : district
       },
+
+    perthURL: (_, getters) =>
+      URL => 
+        Object.entries(getters.romanDistrict).find(district =>
+          district[1] === URL
+        )[0],
 }

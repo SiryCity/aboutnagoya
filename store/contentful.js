@@ -17,7 +17,12 @@ export const actions = {
 export const mutations = {
   getPosts(state, contents){
 
-    const posts = contents.items.map(p => p.fields)
+    const posts = contents.items.map(p =>
+      ({
+        ... p.fields,
+        date: p.fields.date.split`T`[0]
+      })
+    )
 
     state.posts = posts
   }
@@ -34,15 +39,15 @@ export const getters = {
       ({
         title: post.title,
         subTitle: post.subTitle,
-        date: post.date.split('T')[0],
+        date: post.date,
         district: post.district,
       })
     ),
 
-  sameDistrictPosts: ({posts}, _, rootGetters) =>
+  sameDistrictPosts: ({posts}, _, __, rootGetters) =>
     district =>
-      posts.filter(post =>
-        rootGetters.main.makeURL(post.district) === district),
+      posts && posts.filter(post =>
+        rootGetters['main/makeURL'](post.district) === district),
 
   
   
