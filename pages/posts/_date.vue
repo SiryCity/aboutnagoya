@@ -3,31 +3,31 @@
 
     section-wrapper(pos='left')
       title-box(
-        :title='nearbyPosts.curr.title'
-        :subTitle='nearbyPosts.curr.subTitle'
+        :title='posts.curr.title'
+        :subTitle='posts.curr.subTitle'
       )
 
       s-n-s-box
       justify-tags
-        p {{nearbyPosts.curr.date}}
+        p {{posts.curr.date}}
       
         char-link(
           to='districts-district'
-          :district='nearbyPosts.curr.district'
-          :char='nearbyPosts.curr.district'
+          :district='posts.curr.district'
+          :char='posts.curr.district'
           type='shrink'
         )
 
       hr
 
       h2.posts_default-tag 概要
-      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyAbout)')
+      div.posts__body(v-html='$md.render(posts.curr.bodyAbout)')
       h2.posts_default-tag 地理
-      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyGeography)')
+      div.posts__body(v-html='$md.render(posts.curr.bodyGeography)')
       h2.posts_default-tag 人
-      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyPeople)')
+      div.posts__body(v-html='$md.render(posts.curr.bodyPeople)')
       h2.posts_default-tag 結論
-      div.posts__body(v-html='$md.render(nearbyPosts.curr.bodyConclusion)')
+      div.posts__body(v-html='$md.render(posts.curr.bodyConclusion)')
 
       hr
 
@@ -37,14 +37,14 @@
           to='map'
           char='だいたいマップで見る'
           type='shrink'
-          :coords='nearbyPosts.curr.coords'
+          :coords='posts.curr.coords'
           :blue='true'
         )
         g-maps(
-          :to='`https://www.google.co.jp/maps/@${nearbyPosts.curr.coords.lat},${nearbyPosts.curr.coords.lon},15z`'
+          :to='`https://www.google.co.jp/maps/@${posts.curr.coords.lat},${posts.curr.coords.lon},15z`'
           char='Google Mapsで見る'
           type='shrink'
-          :coords='nearbyPosts.curr.coords'
+          :coords='posts.curr.coords'
           :blue='true'
         )
 
@@ -55,25 +55,25 @@
         )
       
       prev-next-link(
-        v-if='nearbyPosts.prev'
+        v-if='posts.prev'
         type='prev'
 
-        :date='nearbyPosts.prev.date'
-        :subTitle='nearbyPosts.prev.subTitle'
-        :title='nearbyPosts.prev.title'
-        :district='nearbyPosts.prev.district'
+        :date='posts.prev.date'
+        :subTitle='posts.prev.subTitle'
+        :title='posts.prev.title'
+        :district='posts.prev.district'
 
         :img='kari'
       )
 
       prev-next-link(
-        v-if='nearbyPosts.next'
+        v-if='posts.next'
         type='next'
 
-        :date='nearbyPosts.next.date'
-        :subTitle='nearbyPosts.next.subTitle'
-        :title='nearbyPosts.next.title'
-        :district='nearbyPosts.next.district'
+        :date='posts.next.date'
+        :subTitle='posts.next.subTitle'
+        :title='posts.next.title'
+        :district='posts.next.district'
 
         :img='kari'
       )
@@ -81,9 +81,9 @@
 
     section-wrapper(pos='right')
 
-      title-box(:title='`${nearbyPosts.curr.district}の投稿`')
+      title-box(:title='`${posts.curr.district}の投稿`')
       article-link(
-        v-for='(post, i) in nearbyPosts.closer'
+        v-for='(post, i) in posts.closer'
         :key='`post-closer-${i}`'
 
         :date='post.date'
@@ -96,7 +96,7 @@
 
       title-box(title='最新の投稿')
       article-link(
-        v-for='(post, i) in nearbyPosts.latest'
+        v-for='(post, i) in posts.latest'
         :key='`post-latest-${i}`'
 
         :date='post.date'
@@ -128,9 +128,8 @@ export default {
   mixins: [Meta],
   head(){ 
     return {
-      title: this.nearbyPosts.curr.title.replace('だいたい', ''),
+      title: (this.posts.curr.title.replace('だいたい', '')),
       type: 'article',
-      url: this.currentUrl,
     }
   },
   components:{
@@ -145,67 +144,16 @@ export default {
     SNSBox,
   },
 
-
-  async asyncData({env, payload}){
-    if(payload) return payload
-    const contents = await createClient().getEntries({
-      'content_type': env.CTF_BLOG_POST_TYPE_ID,
-      order: '-fields.date',
-    })
-
-    return {
-      posts: contents.items.map(item => 
-        ({
-          title: item.fields.title,
-          subTitle: item.fields.subTitle,
-          date: item.fields.date.split('T')[0],
-          district: item.fields.district,
-          
-          bodyAbout: item.fields.bodyAbout,
-          bodyGeography: item.fields.bodyGeography,
-          bodyPeople: item.fields.bodyPeople,
-          bodyConclusion: item.fields.bodyConclusion,
-
-          coords: item.fields.coords,
-        })
-      )
+  computed: {
+    posts(){
+      return this.$store.getters["contentful/nearbyPosts"](this.$route.params.date)
     }
-
   },
 
-  computed:{
-    nearbyPosts(){
-      return this.posts.reduce((prev, curr, i, posts) =>
-        prev
-        || curr.date !== this.$route.params.date
-          ? prev
-          : {
-            next: posts[i - 1] || null,
-            curr,
-            prev: posts[i + 1] || null,
-
-            closer: posts.filter(post =>
-              post.district === curr.district
-              && post.title !== curr.title
-            ),
-
-            latest: posts.filter((post, j) =>
-              j <= 2
-            ),
-          }
-      , null)
-    },
-
-    kari: () => kari,
-
-    data: () =>
-      ({
-        currentUrl: null
-      }),
-    mounted(){
-      this.currentUrl = location.href
-    }
-  }
+  created(){
+    this.$store.state.contentful.posts
+    || this.$store.dispatch('contentful/fetchContents')
+  },
 }
 </script>
 
