@@ -74,10 +74,5 @@ export default {
     kari: () => kari
   },
 
-  created(){
-    this.$store.state.contentful.posts
-    || this.$store.dispatch('contentful/fetchContents')
-  },
-
 }
 </script>

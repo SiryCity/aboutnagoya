@@ -35,7 +35,7 @@ export default {
   },
 
 
-  async mounted(){
+  mounted(){
 
       const L = require('leaflet')
 
@@ -55,7 +55,7 @@ export default {
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}')
       )
 
-      await this.$store.getters['contentful/datePosts'].forEach((post, i) => {
+      this.$store.getters['contentful/datePosts'].forEach((post, i) => {
         
         const coords = [post.coords.lat, post.coords.lon]
         const icon = L.divIcon({

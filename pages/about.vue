@@ -25,10 +25,6 @@ export default {
     about: () => about,
   },
 
-  created(){
-    this.$store.state.contentful.posts
-    || this.$store.dispatch('contentful/fetchContents')
-  },
 }
 </script>
 

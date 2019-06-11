@@ -1,23 +1,3 @@
-import {createClient} from '~/plugins/contentful.js'
-
-export const actions = {
-
-  async fetchContents({commit}){
-
-    commit(
-      'getPosts',
-      (
-        await createClient().getEntries({
-          'content_type': process.env.CTF_BLOG_POST_TYPE_ID,
-          order: '-fields.date',
-        })
-      )
-    )
-    
-  }
-}
-
-
 export const mutations = {
   getPosts(state, contents){
 
