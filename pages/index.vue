@@ -28,12 +28,13 @@
         )
 
       title-box(title='地図で調べる')
-      char-link(
-        to='map'
-        char='だいたいマップ ▶'
-        type='long'
-        :blue='true'
-      )
+      justify-tags
+        char-link(
+          to='map'
+          char='だいたいマップ ▶'
+          type='long'
+          :blue='true'
+        )
 
 </template>
 

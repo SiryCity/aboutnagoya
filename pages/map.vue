@@ -35,26 +35,7 @@ export default {
   },
 
 
-  async asyncData({env, payload}){
-    if(payload) return payload
-    const contents = await createClient().getEntries({
-      'content_type': env.CTF_BLOG_POST_TYPE_ID,
-      order: '-fields.date',
-    })
-
-    return {
-      posts: contents.items.map(item => 
-        ({
-          title: item.fields.title,
-          coords: item.fields.coords,
-          date: item.fields.date.split('T')[0]
-        })
-      )
-    }
-
-  },
-
-  mounted(){
+  async mounted(){
 
       const L = require('leaflet')
 
@@ -74,7 +55,7 @@ export default {
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}')
       )
 
-      this.posts.forEach((post, i) => {
+      await this.$store.getters['contentful/datePosts'].forEach((post, i) => {
         
         const coords = [post.coords.lat, post.coords.lon]
         const icon = L.divIcon({

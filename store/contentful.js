@@ -3,13 +3,17 @@ import {createClient} from '~/plugins/contentful.js'
 export const actions = {
 
   async fetchContents({commit}){
-    
-    const contents = await createClient().getEntries({
-      'content_type': process.env.CTF_BLOG_POST_TYPE_ID,
-      order: '-fields.date',
-    })
 
-    commit('getPosts', contents)
+    commit(
+      'getPosts',
+      (
+        await createClient().getEntries({
+          'content_type': process.env.CTF_BLOG_POST_TYPE_ID,
+          order: '-fields.date',
+        })
+      )
+    )
+    
   }
 }
 
@@ -17,14 +21,14 @@ export const actions = {
 export const mutations = {
   getPosts(state, contents){
 
-    const posts = contents.items.map(p =>
+    state.posts = contents.items.map(p =>
       ({
         ... p.fields,
-        date: p.fields.date.split`T`[0]
+        title: `だいたい${p.fields.title}`,
+        date: p.fields.date.split`T`[0],
       })
     )
-
-    state.posts = posts
+    
   }
 }
 
