@@ -14,17 +14,16 @@
           :char='posts && posts.curr.district'
           type='shrink'
         )
-  //-
       hr
 
       h2.posts_default-tag 概要
-      div.posts__body(v-html='$md.render(posts.curr.bodyAbout)')
+      div.posts__body(v-html='$md.render(posts ? posts.curr.bodyAbout : "")')
       h2.posts_default-tag 地理
-      div.posts__body(v-html='$md.render(posts.curr.bodyGeography)')
+      div.posts__body(v-html='$md.render(posts ? posts.curr.bodyGeography : "")')
       h2.posts_default-tag 人
-      div.posts__body(v-html='$md.render(posts.curr.bodyPeople)')
+      div.posts__body(v-html='$md.render(posts ? posts.curr.bodyPeople : "")')
       h2.posts_default-tag 結論
-      div.posts__body(v-html='$md.render(posts.curr.bodyConclusion)')
+      div.posts__body(v-html='$md.render(posts ? posts.curr.bodyConclusion : "")')
 
       hr
 
@@ -34,14 +33,15 @@
           to='map'
           char='だいたいマップで見る'
           type='shrink'
-          :coords='posts.curr.coords'
+          :coords='posts && posts.curr.coords'
           :blue='true'
         )
+
         g-maps(
-          :to='`https://www.google.co.jp/maps/@${posts.curr.coords.lat},${posts.curr.coords.lon},15z`'
+          :to='`https://www.google.co.jp/maps/@${posts && posts.curr.coords.lat},${posts && posts.curr.coords.lon},15z`'
           char='Google Mapsで見る'
           type='shrink'
-          :coords='posts.curr.coords'
+          :coords='posts && posts.curr.coords'
           :blue='true'
         )
 
@@ -50,27 +50,27 @@
           char='◀ home'
           type='shrink'
         )
-      
+
       prev-next-link(
-        v-if='posts.prev'
+        v-if='posts && posts.prev'
         type='prev'
 
-        :date='posts.prev.date'
-        :subTitle='posts.prev.subTitle'
-        :title='posts.prev.title'
-        :district='posts.prev.district'
+        :date='posts && posts.prev.date'
+        :subTitle='posts && posts.prev.subTitle'
+        :title='posts && posts.prev.title'
+        :district='posts && posts.prev.district'
 
         :img='kari'
       )
 
       prev-next-link(
-        v-if='posts.next'
+        v-if='posts && posts.next'
         type='next'
 
-        :date='posts.next.date'
-        :subTitle='posts.next.subTitle'
-        :title='posts.next.title'
-        :district='posts.next.district'
+        :date='posts && posts.next.date'
+        :subTitle='posts && posts.next.subTitle'
+        :title='posts && posts.next.title'
+        :district='posts && posts.next.district'
 
         :img='kari'
       )
@@ -78,9 +78,9 @@
 
     section-wrapper(pos='right')
 
-      title-box(:title='`${posts.curr.district}の投稿`')
+      title-box(:title='`${posts && posts.curr.district}の投稿`')
       article-link(
-        v-for='(post, i) in posts.closer'
+        v-for='(post, i) in posts && posts.closer'
         :key='`post-closer-${i}`'
 
         :date='post.date'
@@ -93,7 +93,7 @@
 
       title-box(title='最新の投稿')
       article-link(
-        v-for='(post, i) in posts.latest'
+        v-for='(post, i) in posts && posts.latest'
         :key='`post-latest-${i}`'
 
         :date='post.date'
@@ -125,7 +125,7 @@ export default {
   mixins: [Meta],
   head(){ 
     return {
-      //title: (this.posts.curr.title.replace('だいたい', '')),
+      title: (this.posts && this.posts.curr.title.replace('だいたい', '')),
       type: 'article',
     }
   },
@@ -140,8 +140,9 @@ export default {
     JustifyTags,
     SNSBox,
   },
-
+  
   computed: {
+    kari: () => kari,
     posts(){
       return this.$store.getters["contentful/nearbyPosts"](this.$route.params.date)
     }
