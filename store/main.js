@@ -22,7 +22,7 @@ export const getters = {
     makeURL: (_, getters) =>
       district => {
       
-        const code = district.charCodeAt(0)
+        const code = district && district.charCodeAt(0)
 
         return ((code >= 0x4e00 && code <= 0x9fcf)
         || (code >= 0x3400 && code <= 0x4dbf)

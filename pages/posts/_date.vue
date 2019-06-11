@@ -1,23 +1,20 @@
 <template lang="pug">
   page-wrapper
-
     section-wrapper(pos='left')
       title-box(
-        :title='posts.curr.title'
-        :subTitle='posts.curr.subTitle'
+        :title='posts && posts.curr.title'
+        :subTitle='posts && posts.curr.subTitle'
       )
-
       s-n-s-box
       justify-tags
-        p {{posts.curr.date}}
-      
+        p {{posts && posts.curr.date}}
         char-link(
-          to='districts-district'
-          :district='posts.curr.district'
-          :char='posts.curr.district'
+          :to='posts && "districts-district"'
+          :district='posts && posts.curr.district'
+          :char='posts && posts.curr.district'
           type='shrink'
         )
-
+  //-
       hr
 
       h2.posts_default-tag 概要
@@ -128,7 +125,7 @@ export default {
   mixins: [Meta],
   head(){ 
     return {
-      title: (this.posts.curr.title.replace('だいたい', '')),
+      //title: (this.posts.curr.title.replace('だいたい', '')),
       type: 'article',
     }
   },
