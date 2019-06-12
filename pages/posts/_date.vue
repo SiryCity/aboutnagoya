@@ -17,13 +17,15 @@
       hr
 
       h2.posts_default-tag 概要
-      div.posts__body(v-html='$md.render(posts ? posts.curr.bodyAbout : "")')
+      div.posts__body
+        p {{posts ? posts.curr.bodyAbout : ""}}
       h2.posts_default-tag 地理
       div.posts__body(v-html='$md.render(posts ? posts.curr.bodyGeography : "")')
       h2.posts_default-tag 人
       div.posts__body(v-html='$md.render(posts ? posts.curr.bodyPeople : "")')
       h2.posts_default-tag 結論
-      div.posts__body(v-html='$md.render(posts ? posts.curr.bodyConclusion : "")')
+      div.posts__body
+        p {{posts ? posts.curr.bodyConclusion : ""}}
 
       hr
 
