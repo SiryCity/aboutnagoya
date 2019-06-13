@@ -22,10 +22,11 @@ import CharLink from '~/components/CharLink'
 import JustifyTags from '~/components/JustifyTags'
 
 export default {
-  head:{
-    title: 'だいたいマップ',
-    type: 'website',
-  },
+  head: () =>
+    ({
+      title: 'だいたいマップ',
+      type: 'website',
+    }),
   components:{
     PageWrapper,
     SectionWrapper,

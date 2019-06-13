@@ -12,10 +12,11 @@ import TitleBox from '~/components/TitleBox'
 import about from '~/assets/about.md'
 
 export default {
-  head:{
-    title: 'サイトについて',
-    type: 'website',
-  },
+  head: () =>
+    ({
+      title: 'サイトについて',
+      type: 'website',
+    }),
   components: {
     PageWrapper,
     SectionWrapper,

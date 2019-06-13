@@ -18,10 +18,11 @@ import SectionWrapper from '~/components/SectionWrapper'
 import TitleBox from '~/components/TitleBox'
 
 export default {
-  head:{
-    title: 'お問い合わせ',
-    type: 'website',
-  },
+  head: () =>
+    ({
+      title: 'お問い合わせ',
+      type: 'website',
+    }),
   components: {
     PageWrapper,
     SectionWrapper,
