@@ -22,6 +22,9 @@ export default {
     ({
       title: 'お問い合わせ',
       type: 'website',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: 'お問い合わせ'},
+      ]
     }),
   components: {
     PageWrapper,

@@ -1,6 +1,6 @@
 export const mutations = {
   getPosts(state, contents){
-console.dir(contents.items[0].fields)
+    
     state.posts = contents.items.map(p =>
       ({
         ... p.fields,

@@ -16,6 +16,9 @@ export default {
     ({
       title: 'サイトについて',
       type: 'website',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: 'サイトについて'},
+      ]
     }),
   components: {
     PageWrapper,

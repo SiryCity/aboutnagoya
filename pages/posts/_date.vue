@@ -120,15 +120,16 @@ import CharLink from '~/components/CharLink'
 import GMaps from '~/components/GMaps'
 import JustifyTags from '~/components/JustifyTags'
 import SNSBox from '~/components/SNSBox.vue'
-import Meta from '~/assets/mixins/meta.js'
 
 import kari from '~/assets/nagoya.svg'
 export default {
-  mixins: [Meta],
-  head(){ 
+  head(){
     return {
       title: (this.posts && this.posts.curr.title.replace('だいたい', '')),
       type: 'article',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: (this.posts && this.posts.curr.title.replace('だいたい', ''))},
+      ]
     }
   },
   components:{

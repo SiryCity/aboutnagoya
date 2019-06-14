@@ -53,6 +53,9 @@ export default {
     ({
       title: 'だいたい名古屋',
       titleTemplate: null,
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: 'だいたい名古屋'},
+      ]
     }),
   components: {
     PageWrapper,

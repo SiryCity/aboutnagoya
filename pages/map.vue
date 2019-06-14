@@ -26,6 +26,9 @@ export default {
     ({
       title: 'だいたいマップ',
       type: 'website',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: 'だいたいマップ'},
+      ]
     }),
   components:{
     PageWrapper,

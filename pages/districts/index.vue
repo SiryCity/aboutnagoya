@@ -43,19 +43,17 @@ import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import CharLink from '~/components/CharLink'
 
-import Meta from '~/assets/mixins/meta.js'
-
 import kari from '~/assets/nagoya.svg'
 export default {
-  mixins: [Meta],
-  data: () => 
-    ({
-      meta: {
-        title: '記事一覧',
-        type: 'article',
-        url: null,
-      },
-    }),
+  head(){
+    return {
+      title: '記事一覧',
+      type: 'article',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: '記事一覧'},
+      ]
+    }
+  },
   components: {
     PageWrapper,
     SectionWrapper,

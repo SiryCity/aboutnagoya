@@ -47,19 +47,16 @@ import TitleBox from '~/components/TitleBox'
 import ArticleLink from '~/components/ArticleLink'
 import PrevNextLink from '~/components/PrevNextLink'
 import CharLink from '~/components/CharLink'
-import Meta from '~/assets/mixins/meta.js'
 
 import kari from '~/assets/nagoya.svg'
 export default {
-  mixins: [Meta],
-  data(){ 
+  head(){
     return {
-      meta: {
-        title: this.$store.getters['main/perthURL'](this.$route.params.district),
-        type: 'article',
-        url: this.currentUrl,
-      },
-      currentUrl: null
+      title: (this.$store.getters['main/perthURL'](this.$route.params.district)),
+      type: 'article',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: this.$store.getters['main/perthURL'](this.$route.params.district)},
+      ]
     }
   },
   components:{
