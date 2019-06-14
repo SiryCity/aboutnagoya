@@ -128,7 +128,7 @@ export default {
       title: (this.posts && this.posts.curr.title.replace('だいたい', '')),
       type: 'article',
       meta: [
-        {hid: 'og:title', property: 'og:title', content: (this.posts && this.posts.curr.title.replace('だいたい', ''))},
+        {hid: 'og:title', property: 'og:title', content: `だいたい${this.posts && this.posts.curr.title.replace('だいたい', '')} | だいたい名古屋`},
       ]
     }
   },
