@@ -43,12 +43,12 @@ export default {
       const ref = this.$refs['leaflet__wrapper']
 
       const center = L.latLng(
-        this.$route.params.lat
+        this.$route.params.coords
           ? [this.$route.params.coords.lat, this.$route.params.coords.lon]
           : [35.153, 136.928]
       )
 
-      const zoom = this.$route.params.lat
+      const zoom = this.$route.params.coords
         ? 16
         : 12
 
