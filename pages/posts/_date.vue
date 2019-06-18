@@ -170,13 +170,14 @@ export default {
     padding-left 10px
     box-sizing border-box
     box-shadow -8px 0 0 0 var(--c)
-    
   >>> h3
     font-size 18px
     margin 20px 0 10px
     border-left 3px solid var(--c)
     padding-left 5px
     box-sizing border-box
+  >>> p
+    margin 30px 0
   >>> pre
     margin 20px 0 30px
     code
