@@ -20,11 +20,7 @@ module.exports = {
       { hid: 'og:title', property: 'og:title', content: 'だいたい名古屋' },
       { hid: 'og:description', property: 'og:description', content: '生粋の名古屋人が名古屋の「だいたい」を発信。' },
       { hid: 'og:image', property: 'og:image', content: 'https://daitai.nagoya/ogp-image.png'},
-
-
-      { name: "robots", content: "noindex" },
-      { name: "robots", content: "nofollow" },
-      { name: "robots", content: "noachieve" },
+      
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
