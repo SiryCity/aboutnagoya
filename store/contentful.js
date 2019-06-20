@@ -6,6 +6,7 @@ export const mutations = {
         ... p.fields,
         title: `だいたい${p.fields.title}`,
         date: p.fields.date.split`T`[0],
+//        date: p.sys.updatedAt.split`T`[0],
         coords: {
           lat: 35 + p.fields.lat35 / 1000,
           lon: 136 + p.fields.lon136 / 1000,
